@@ -8,3 +8,7 @@ yadm submodule update --recursive --init
 if [ -f $HOME/.config/yadm/install-apps.sh ]; then
   $HOME/.config/yadm/install-apps.sh
 fi
+
+# install zplug
+echo "Installing zplug"
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh

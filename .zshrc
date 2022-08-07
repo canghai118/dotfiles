@@ -96,3 +96,9 @@ if [ -f "$HOME/.zalias" ]; then
 fi
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+
+# init zplug
+if [ -f "$HOME/.zplug/init.zsh" ]; then
+	source $HOME/.zplug/init.zsh
+fi
