@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # run install-apps.sh if file exists
-if [ -f ./install-apps.sh ]; then
-  ./install-apps.sh
+if [ -f $HOME/.config/yadm/install-apps.sh ]; then
+  $HOME/.config/yadm/install-apps.sh
 fi
