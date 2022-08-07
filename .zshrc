@@ -101,4 +101,5 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # init zplug
 if [ -f "$HOME/.zplug/init.zsh" ]; then
 	source $HOME/.zplug/init.zsh
+	zplug "code-stats/code-stats-zsh", from:gitlab, use:"codestats.plugin.zsh"
 fi

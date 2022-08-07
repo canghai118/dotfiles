@@ -41,8 +41,6 @@ Plugin 'scrooloose/nerdtree'
 
 Bundle 'xolox/vim-misc'
 
-Bundle 'xolox/vim-lua-ftplugin'
-
 Bundle 'fatih/vim-go'
 
 Plugin 'chr4/nginx.vim'
