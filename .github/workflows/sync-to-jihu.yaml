@@ -1,0 +1,26 @@
+name: SyncToJihu
+on: [push]
+jobs:
+  PushToJihu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install ssh key for jihu
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.JIHU_SSH_KEY }}
+          name: jihu
+          known_hosts: |
+            jihulab.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCpndvpEtk3Ajwp74T6t6/uofKW6HzS/ZYmzqEFNxl+er1uroc0ZYfo3c211k3y3ickN8fKkOcADagC9QI3Wt/sKfff/46gpKie70bUyEjdSVA42hdhUvLQ+jASjU3QE+7frJQ/7Qzbff8URPJ9HQba3vPA8QDAvbDEWpLN7n364zELXKiuN1jGD0oemTsJsKDcc07cSwNTwTVDLdRYPCU4RhT0q/l2Xtmd1KgDFOmPoI0S2wkRO47soJcjbMlUhh5p/uZBV+XJxj2BWUlJERoBQie/AbZZfWjdRNZSKf4y7qHoR8YBAD7gSRKBkQM20Dd0DqGRI7HUyYdCQtU5Ex+3Zh7WtJwhWBWJ42zu+ILUfRsXQvJnGZ3fgc8BlEO3hzP+rJWKGZbVjgkMNsX7ZkXwNZ/xzj8oBHhCE2EvfjLo0+nHpRjppQXC7VWQSpxMv4M6RTcwuEW/hC5L/QpXEaORW1I5T68eJCsMuOIBOnZb+t7lM5ftOLLW2/7DUz8FS9tKyfCVHohHfOJexqrACF3FkGsXYxx5XKm9KjLrQtfXZLeWDaColIX0w6szCha9NnclQfs38izoYCpyE2ue8HwPdMJT9M19XW+ZfidLPBf/U0SK5eSwSQRj+HFSKxAz7kLZRmxi61jdaOVvdgUmT/ByvwVnWyne0EE8M0zLesm8Tw==
+            jihulab.com ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAD6qo5z7vy4J1dTRyhaf8ats0lDWVgpgMddICUaVRTSMcNjfSaq4XHdPnSeXwWsAuSYN/3KZzoVsKcvZ/y5bc15fQHomE2B4Wn0+AnFv8XDv0ZHuAnZ4JLvbjtG0aVjsdO/97MF3kAeabQm4+ci4YPx4GZVxE/2LcN+W8S024Ky7+qLKA==
+            jihulab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAF3eNpQq0GNg0IZgh6gWOd1UOoaVJAQU9tjj6ocVuMT
+          config: |
+            Host jihulab.com
+            HostName jihulab.com
+            User git
+            IdentityFile ~/.ssh/jihu
+      - run: git fetch origin --unshallow
+      - name: "Add jihu remote repository"
+        run: "git remote add jihu git@jihulab.com:canghai118/dotfiles.git"
+      - name: "Push to jihu"
+        run: "git push -u jihu master"
