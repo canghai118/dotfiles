@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# init submodules
+echo "Init submodules"
+yadm submodule update --recursive --init
+
 # run install-apps.sh if file exists
 if [ -f $HOME/.config/yadm/install-apps.sh ]; then
   $HOME/.config/yadm/install-apps.sh
