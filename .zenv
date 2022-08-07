@@ -1,0 +1,10 @@
+#!/bin/bash
+
+alias proxy='. proxy.sh'
+
+# load local zenv file if exists
+zenvlocal="$HOME/.zenv-local"
+if [ -f "$zenvlocal" ]; then
+	    source "$zenvlocal"
+fi
+
