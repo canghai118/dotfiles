@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$HOME/bin:$PATH
+
 alias proxy='. proxy.sh'
 
 # load local zenv file if exists
