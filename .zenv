@@ -4,9 +4,16 @@ export PATH=$HOME/bin:$PATH
 
 alias proxy='. proxy.sh'
 
+
 # load local zenv file if exists
 zenvlocal="$HOME/.zenv-local"
 if [ -f "$zenvlocal" ]; then
 	    source "$zenvlocal"
+fi
+
+
+if command -v kubectl &> /dev/null
+then
+    source <(kubectl completion zsh)
 fi
 
