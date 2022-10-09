@@ -17,3 +17,7 @@ then
     source <(kubectl completion zsh)
 fi
 
+if command -v kubebuilder &> /dev/null
+then
+	source <(kubebuilder completion zsh)
+fi
