@@ -21,3 +21,9 @@ if command -v kubebuilder &> /dev/null
 then
 	source <(kubebuilder completion zsh)
 fi
+
+kubeconfig_setup="$HOME/.kube/setup.sh"
+
+if [ -f "$kubeconfig_setup" ]; then
+	source "$kubeconfig_setup"
+fi
