@@ -27,3 +27,13 @@ kubeconfig_setup="$HOME/.kube/setup.sh"
 if [ -f "$kubeconfig_setup" ]; then
 	source "$kubeconfig_setup"
 fi
+
+if [ -d "$HOME/.local/bin" ]; then
+	export PATH=$PATH:$HOME/.local/bin
+fi
+
+if [ -d "$HOME/.zenv.d" ]; then
+	for f in $HOME/.zenv.d/*.sh; do
+		source $f
+	done
+fi
