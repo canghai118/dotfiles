@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -49,7 +50,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages)
+plugins=(evalcache git colored-man-pages)
 
 # User configuration
 
@@ -86,25 +87,36 @@ source $ZSH/oh-my-zsh.sh
 setopt noincappendhistory
 setopt nosharehistory
 
-zenv="$HOME/.zenv"
-if [ -f "$zenv" ]; then
-	source "$zenv" 
-fi 
 
-if [ -f "$HOME/.zalias" ]; then
-	source $HOME/.zalias
+export PATH=$HOME/bin:$PATH
+
+if [ -d "$HOME/.local/bin" ]; then
+	export PATH=$PATH:$HOME/.local/bin
 fi
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 
 # init zplug
 if [ -f "$HOME/.zplug/init.zsh" ]; then
 	source $HOME/.zplug/init.zsh
-	zplug "code-stats/code-stats-zsh", from:gitlab, use:"codestats.plugin.zsh"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# load rc scripts in .z-rc.d
+
+if [ -d "$HOME/.z-rc.d" ]; then
+	if [ -f "$HOME/.z-rc.d/config.env" ]; then
+		source "$HOME/.z-rc.d/config.env"
+	fi
+	for f in $HOME/.z-rc.d/*.sh; do
+		source $f
+	done
+fi
+
+
+# load local zenv file if exists
+zenvlocal="$HOME/.zenv-local"
+if [ -f "$zenvlocal" ]; then
+	    source "$zenvlocal"
+fi
+
+
+fpath=(/usr/local/share/zsh-completions $fpath)
