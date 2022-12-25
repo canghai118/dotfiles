@@ -6,7 +6,7 @@ if [[ "$cmd" != "switch" && "$cmd" != "off" && "$cmd" != "on" ]]; then
 fi
 
 
-proxy=http://127.0.0.1:8234
+proxy=${DEFAULT_PROXY:-http://127.0.0.1:1080}
 
 state=$http_proxy_state
 if [[ "$state" != "on" ]]; then
