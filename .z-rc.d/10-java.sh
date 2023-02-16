@@ -15,7 +15,7 @@ lazy_java() {
 }
 
 
-if [ -d "$HOME/.jenvx" ]; then
+if [ -d "$HOME/.jenv" ]; then
   alias java=lazy_java
 fi
 
