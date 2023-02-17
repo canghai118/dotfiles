@@ -2,7 +2,7 @@
 
 lazy_load_nvm() {
 
-  unset -f node nvm
+  unset -f node nvm yarn pnpm
 
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -17,6 +17,16 @@ node() {
 nvm() {
   lazy_load_nvm
   nvm $@
+}
+
+yarn() {
+  lazy_load_nvm
+  yarn $@
+}
+
+pnpm() {
+  lazy_load_nvm
+  pnpm $@
 }
 
 
