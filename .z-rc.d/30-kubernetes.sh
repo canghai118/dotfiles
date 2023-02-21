@@ -3,6 +3,7 @@
 # setup kubectl alias
 if command -v kubectl &> /dev/null
 then
+	source <(kubectl completion zsh)
 	alias k=kubectl
 fi
 
