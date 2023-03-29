@@ -1,3 +1,4 @@
+export LC_CTYPE="en_US.UTF-8"
 zmodload zsh/zprof
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
