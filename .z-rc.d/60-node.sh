@@ -36,3 +36,9 @@ if [ -d "$PNPM_HOME" ]; then
   export PATH="$PNPM_HOME:$PATH"
 fi
 # pnpm end #
+
+
+# add yarn bin to path
+if [ -d "$HOME/.yarn/bin" ]; then
+  export PATH="$HOME/.yarn/bin:$PATH"
+fi
