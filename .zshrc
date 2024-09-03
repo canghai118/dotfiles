@@ -120,4 +120,6 @@ if [ -f "$zenvlocal" ]; then
 fi
 
 
+export TERM=xterm
+
 fpath=(/usr/local/share/zsh-completions $fpath)
